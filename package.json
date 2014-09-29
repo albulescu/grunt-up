@@ -35,5 +35,10 @@
     "async": "^0.9.0",
     "grunt": "^0.4.5",
     "ssh2": "^0.3.6"
+  },
+  "devDependencies": {
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1"
   }
 }
