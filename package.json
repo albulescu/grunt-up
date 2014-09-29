@@ -1,0 +1,39 @@
+{
+  "name": "grunt-release-deploy",
+  "version": "1.0.0",
+  "description": "Grunt task for deploying new releases",
+  "author": {
+    "name": "Albulescu Cosmin",
+    "email": "cosmin@albulescu.ro"
+  },
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "bugs": {
+    "url": "https://github.com/albulescu/grunt-release-deploy/issues"
+  },
+  "files": [
+    "tasks"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albulescu/grunt-release-deploy.git"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "keywords": [
+    "deploy",
+    "release",
+    "grunt",
+    "plugin"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/albulescu/grunt-release-deploy",
+  "dependencies": {
+    "async": "^0.9.0",
+    "grunt": "^0.4.5",
+    "ssh2": "^0.3.6"
+  }
+}
