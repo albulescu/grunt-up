@@ -41,7 +41,9 @@ module.exports = function(grunt) {
 					}
 
 					hook = hook.replace('@version', version);
-					hook = hook.replace('@path', options.dest + '/current');
+					hook = hook.replace('@path', options.dest + '/releases/' + version);
+					hook = hook.replace('@current', options.dest + '/current');
+					hook = hook.replace('@base', options.dest);
 
 					lst[index] = hook;
 				});
@@ -67,16 +69,20 @@ module.exports = function(grunt) {
 				async.series([
 
 					//create release version directory
-					command(connection, 'cd %s/releases && mkdir %s', options.dest, version),
-
-					//remove current link to the last release
-					command(connection, 'rm -rf %s/current', options.dest),
-
-					//create symbolic link
-					command(connection, 'ln -s %s/releases/%s %s/current', options.dest, version, options.dest),
+					command(connection, 'mkdir -p %s/releases && cd %s/releases && mkdir %s', options.dest, options.dest, version),
 
 					//copy source to remote destination
-					command('scp -r %s %s@%s:%s/releases/%s', options.source, settings.username, settings.host, options.dest, version)
+					settings.password ?
+					//set password with sshpass
+					command('sshpass -p "%s" scp -r %s %s@%s:%s/releases/%s', settings.password, options.source, settings.username, settings.host, options.dest, version) :
+					//set identify file
+					( settings.privateKeyPath ? 
+						command('scp -i %s -r %s %s@%s:%s/releases/%s', settings.privateKeyPath, options.source, settings.username, settings.host, options.dest, version) :
+						command('scp -r %s %s@%s:%s/releases/%s', options.source, settings.username, settings.host, options.dest, version)
+					),
+
+					//create symbolic link
+					command(connection, 'rm -rf %s/current && ln -s %s/releases/%s %s/current', options.dest, options.dest, version, options.dest)
 
 				], function(error, results) {
 					grunt.log.writeln("Upload complete!");
@@ -220,6 +226,19 @@ module.exports = function(grunt) {
 
 		//add machines to deploy on
 		options.servers.forEach(function(settings) {
+			
+			//force interactive mode if ssh fails
+			settings.tryKeyboard = true;
+
+			if( typeof(settings.privateKey) !== 'undefined' ) {
+
+				//store ssh private key  path
+				settings.privateKeyPath = settings.privateKey;
+
+				//read ssh private key
+				settings.privateKey = require('fs').readFileSync(settings.privateKeyPath);
+			}
+
 			deploys.push(deployOn(new SSH(), settings));
 		});
 
