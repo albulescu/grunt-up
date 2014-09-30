@@ -1,6 +1,6 @@
 {
   "name": "grunt-up",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Grunt task for deploying new releases",
   "author": {
     "name": "Albulescu Cosmin",

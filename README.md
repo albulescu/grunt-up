@@ -44,6 +44,8 @@ Changelog
 
 - 1.0.0
  - basic functionality of deploying nodejs application
+- 1.0.1
+ - bug fix
 
 
 [grunt]:http://gruntjs.com/
