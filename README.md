@@ -47,7 +47,8 @@ Execute task with: ```$ grunt deploy:major``` or ``` $ grunt deploy:minor ```
 ...
 shell: {
   versionminor: {command: 'npm version minor'},
-  versionmajor: {command: 'npm version major'}
+  versionmajor: {command: 'npm version major'},
+  versionpatch: {command: 'npm version patch'},
 },
 
 up: {
@@ -72,7 +73,7 @@ up: {
 grunt.registerTask('deploy', function( mode ){
 
     if(!mode) {
-      return grunt.fail.warn('Specify release type "minor" or "major".');
+      return grunt.fail.warn('Specify release type "minor", "major" or "patch".');
     }
 
     if( mode == 'major') {
@@ -91,7 +92,15 @@ grunt.registerTask('deploy', function( mode ){
       ]);
     }
 
-    grunt.fail.warn('Invalid release type "minor" or "major" required.');
+    if( mode == 'patch' ) {
+      return grunt.task.run([
+          'shell::versionpatch',
+          'build',
+          'up:live',
+      ]);
+    }
+
+    grunt.fail.warn('Invalid release type "minor", "major" or "patch" required.');
 
   });
 
