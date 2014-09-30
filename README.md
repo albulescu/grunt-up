@@ -99,7 +99,8 @@ grunt.registerTask('deploy', function( mode ){
 
 Changelog
 -----------
-
+- 1.0.1 
+ - Bug fix
 - 1.0.0
  - basic functionality of deploying nodejs application
 
