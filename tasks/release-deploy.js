@@ -13,12 +13,12 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('releasedeploy', 'Deploy new release', function() {
 
 		var async = require('async'),
-			SSH = require('ssh2'),
-			complete = this.async(),
-			options = this.options(),
-			util = require('util'),
-			exec = require('child_process').exec,
-			version = (new Date()).getTime();
+		    SSH = require('ssh2'),
+		    complete = this.async(),
+		    options = this.options(),
+		    util = require('util'),
+		    exec = require('child_process').exec,
+		    version = (new Date()).getTime();
 
 		/**
 		 * Get before and after hooks to execute after upload is made
@@ -48,7 +48,8 @@ module.exports = function(grunt) {
 
 		/**
 		 * Upload source to machine
-		 * @param  {SSH} SSH Connection
+		 * @param {SSH} SSH Connection
+		 * @param {object} SSH Settings
 		 * @return {void}
 		 */
 		function upload(connection, settings) {
@@ -112,7 +113,7 @@ module.exports = function(grunt) {
 
 				if( locally )
 				{
-					return exec(cmd, function (error, stdout, stderr) {
+					return exec(cmd.toString(), function (error, stdout, stderr) {
 						
 						if( error ) {
 							return grunt.log.error("Fail to execute locally: " + cmd);
