@@ -10,7 +10,7 @@
 
 module.exports = function(grunt) {
 
-	grunt.registerMultiTask('releasedeploy', 'Deploy new release', function() {
+	grunt.registerMultiTask('up', 'Deploy new release', function() {
 
 		var async = require('async'),
 		    SSH = require('ssh2'),
