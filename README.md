@@ -39,7 +39,7 @@ up: {
 },
 ```
 
-Create task for deploying yout application versioned. This will increment version from your package.json file and will create and commit a tag with version to git. 
+Create task for deploying yout application versioned. This will increment version from your package.json file and will create and commit a tag with version to git. [Grunt shell][grunt-shell] is required for this. Install it with ```npm install grunt-shell```
 
 Execute task with: ```$ grunt deploy:major``` or ``` $ grunt deploy:minor ```
 
@@ -107,3 +107,4 @@ Changelog
 [grunt]:http://gruntjs.com/
 [grunt-start]:http://gruntjs.com/getting-started
 [grunt-file]:http://gruntjs.com/sample-gruntfile
+[grunt-shell]:https://github.com/sindresorhus/grunt-shell
