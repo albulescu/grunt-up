@@ -1,7 +1,7 @@
 Grunt Deploy Task ( grunt-up )
 ====================
 
-Grunt task for deploying new releases of nodejs applications
+Grunt task for deploying new releases
 
 
 Installation
@@ -39,14 +39,69 @@ up: {
 },
 ```
 
+Create task for deploying yout application versioned. This will increment version from your package.json file and will create and commit a tag with version to git. 
+
+Execute task with: ```$ grunt deploy:major``` or ``` $ grunt deploy:minor ```
+
+```sh
+...
+shell: {
+  versionminor: {command: 'npm version minor'},
+  versionmajor: {command: 'npm version major'}
+},
+
+up: {
+  live: {
+    options: {
+      servers: [{
+        host: 'albulescu.ro',
+        username: 'root',
+        privateKey: require('fs').readFileSync(process.env.HOME + '/.ssh/id_rsa')
+      }],
+      execute : {
+        before: [],
+        after: [],
+      },
+      source: process.cwd() + '/dist/*',
+      dest: '/usr/share/wallsongs'
+    }
+  }
+},
+...
+...
+grunt.registerTask('deploy', function( mode ){
+
+    if(!mode) {
+      return grunt.fail.warn('Specify release type "minor" or "major".');
+    }
+
+    if( mode == 'major') {
+      return grunt.task.run([
+          'shell::versionmajor',
+          'build',
+          'up:live',
+      ]);
+    }
+
+    if( mode == 'minor' ) {
+      return grunt.task.run([
+          'shell::versionminor',
+          'build',
+          'up:live',
+      ]);
+    }
+
+    grunt.fail.warn('Invalid release type "minor" or "major" required.');
+
+  });
+
+```
+
 Changelog
 -----------
 
-- 1.0.1
- - bug fix
 - 1.0.0
  - basic functionality of deploying nodejs application
-
 
 
 [grunt]:http://gruntjs.com/
