@@ -34,10 +34,16 @@ module.exports = function(grunt) {
 			if (typeof(options.execute[place]) !== 'undefined') {
 				var list = (options.execute[place] instanceof Array) ? options.execute[place] :
 					[options.execute[place]];
-				list.forEach(function(hook, index) {
+				list.forEach(function(hook, index, lst) {
+					
 					if (typeof(hook) !== 'string' && hook.constructor !== String) {
 						throw ('Command ' + index + ' from ' + place + ' hooks must be a string. Typeof ' + typeof(hook) + ' found.');
 					}
+
+					hook = hook.replace('@version', version);
+					hook = hook.replace('@path', options.dest + '/current');
+
+					lst[index] = hook;
 				});
 
 				return list;

@@ -59,8 +59,8 @@ up: {
         privateKey: require('fs').readFileSync(process.env.HOME + '/.ssh/id_rsa')
       }],
       execute : {
-        before: [],
-        after: [],
+        before: ['echo @version'],
+        after: ['cd @path && pwd'],
       },
       source: process.cwd() + '/dist/*',
       dest: '/usr/share/wallsongs'
@@ -99,6 +99,8 @@ grunt.registerTask('deploy', function( mode ){
 
 Changelog
 -----------
+- 1.0.2
+ - Add placeholder support for hook commands
 - 1.0.1 
  - Bug fix
 - 1.0.0
