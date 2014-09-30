@@ -1,5 +1,5 @@
 {
-  "name": "grunt-release-deploy",
+  "name": "grunt-up",
   "version": "1.0.0",
   "description": "Grunt task for deploying new releases",
   "author": {

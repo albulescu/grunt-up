@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 					return exec(cmd.toString(), function (error, stdout, stderr) {
 						
 						if( error ) {
-							return grunt.log.error("Fail to execute locally: " + cmd);
+							return grunt.fail.warn("Fail to execute locally: " + cmd);
 						}
 
 						if( stderr ) {

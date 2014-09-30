@@ -18,9 +18,8 @@ exports.deploy = {
   no_servers: function(test) {
     grunt.util.spawn({
       grunt: true,
-      args: ['releasedeploy:noserver', '--no-color'],
+      args: ['up:noserver', '--no-color'],
     }, function(err, result) {
-    	console.log('@@@@@'+result.stdout);
       test.ok(result.stdout.indexOf("No servers to deploy!") !== -1, 'Shoud throw error due no servers');
       test.done();
     });

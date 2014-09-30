@@ -29,7 +29,7 @@
     },
 
     // Configuration to be run (and then tested).
-    releasedeploy: {
+    up: {
       noserver: {
         options: {
           servers: [],
