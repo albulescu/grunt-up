@@ -1,6 +1,6 @@
 /**
  * grunt-release-deploy
- * https://github.com/albulescu/grunt-release-deploy
+ * https://github.com/albulescu/grunt-up
  *
  * Author Albulescu Cosmin <cosmin@albulescu.ro>
  * Licensed under the MIT license.
