@@ -40,10 +40,10 @@ module.exports = function(grunt) {
 						throw ('Command ' + index + ' from ' + place + ' hooks must be a string. Typeof ' + typeof(hook) + ' found.');
 					}
 
-					hook = hook.replace('@version', version);
-					hook = hook.replace('@path', options.dest + '/releases/' + version);
-					hook = hook.replace('@current', options.dest + '/current');
-					hook = hook.replace('@base', options.dest);
+					hook = hook.replace(/@version/g, version);
+					hook = hook.replace(/@path/g, options.dest + '/releases/' + version);
+					hook = hook.replace(/@current/g, options.dest + '/current');
+					hook = hook.replace(/@base/g, options.dest);
 
 					lst[index] = hook;
 				});
