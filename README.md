@@ -108,6 +108,8 @@ grunt.registerTask('deploy', function( mode ){
 
 Changelog
 -----------
+- 1.0.5
+ - Bug fixes
 - 1.0.2
  - Add placeholder support for hook commands
 - 1.0.1 
