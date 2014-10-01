@@ -26,7 +26,7 @@ up: {
             host: 'example.com',
             username: 'root',
             password:'password',//not required if privateKey is present
-            privateKey: require('fs').readFileSync(process.env.HOME + '/.ssh/id_rsa')
+            privateKey: process.env.HOME + '/.ssh/id_rsa'
           }],
           execute : {
             before: [], //list of commands or just a string with sh command
@@ -57,7 +57,7 @@ up: {
       servers: [{
         host: 'albulescu.ro',
         username: 'root',
-        privateKey: require('fs').readFileSync(process.env.HOME + '/.ssh/id_rsa')
+        privateKey: process.env.HOME + '/.ssh/id_rsa'
       }],
       execute : {
         before: ['echo @version'],
