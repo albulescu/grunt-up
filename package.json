@@ -1,6 +1,6 @@
 {
   "name": "grunt-up",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Grunt task for deploying new releases",
   "author": {
     "name": "Albulescu Cosmin",
@@ -11,14 +11,14 @@
     "test": "grunt test"
   },
   "bugs": {
-    "url": "https://github.com/albulescu/grunt-release-deploy/issues"
+    "url": "https://github.com/albulescu/grunt-up/issues"
   },
   "files": [
     "tasks"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/albulescu/grunt-release-deploy.git"
+    "url": "git@github.com:albulescu/grunt-up.git"
   },
   "engines": {
     "node": ">= 0.8.0"
@@ -30,7 +30,7 @@
     "plugin"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/albulescu/grunt-release-deploy",
+  "homepage": "https://github.com/albulescu/grunt-up",
   "dependencies": {
     "async": "^0.9.0",
     "colors": "^1.0.1",

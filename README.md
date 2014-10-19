@@ -57,7 +57,7 @@ up: {
       servers: [{
         host: 'albulescu.ro',
         username: 'root',
-        privateKey: require('fs').readFileSync(process.env.HOME + '/.ssh/id_rsa')
+        privateKey: process.env.HOME + '/.ssh/id_rsa'
       }],
       execute : {
         before: ['echo @version'],
@@ -105,9 +105,18 @@ grunt.registerTask('deploy', function( mode ){
   });
 
 ```
+Contribute
+-----------
+1. [Fork it][fork]
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create a new Pull Request
 
 Changelog
 -----------
+- 1.0.5
+ - Bug fixes
 - 1.0.2
  - Add placeholder support for hook commands
 - 1.0.1 
@@ -120,3 +129,4 @@ Changelog
 [grunt-start]:http://gruntjs.com/getting-started
 [grunt-file]:http://gruntjs.com/sample-gruntfile
 [grunt-shell]:https://github.com/sindresorhus/grunt-shell
+[fork]:https://github.com/albulescu/grunt-up/fork
